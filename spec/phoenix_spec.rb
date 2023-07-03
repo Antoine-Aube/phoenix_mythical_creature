@@ -57,7 +57,8 @@ RSpec.describe Phoenix do
 		it "releases a tear after feeling the same emotion on the 3rd time ONLY" do
 			phoenix = Phoenix.new("Bennu")
 			
-			2.times { phoenix.feels_emotion(:confusion) }
+			3.times { phoenix.feels_emotion(:confusion) }
+			# 3.times { phoenix.feels_emotion(:distaste) }
 			expect(phoenix.releases_tear?).to be false
 
 			phoenix.feels_emotion(:confusion)
@@ -77,5 +78,12 @@ RSpec.describe Phoenix do
 			expect(phoenix.pharaoh).to eq(nil)
 			expect(phoenix.emotional_awareness).to eq({})
 		end
-	end
+		it "Just testing some emotional capacity" do
+			phoenix = Phoenix.new("Roger")
+
+			4.times {phoenix.feels_emotion(:shame)}
+			expect(phoenix.emotional_awareness.include?(:shame))
+
+		end
+	end 
 end
